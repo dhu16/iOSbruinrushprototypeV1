@@ -19,6 +19,12 @@ struct UCLAorgs: Identifiable {
     let orgType: String
 }
 
+struct AcademicClubs: Identifiable {
+    var id: Int
+    
+    let clubName, clubImage, description: String
+}
+
 struct FratSor: Identifiable {
     var id: Int
     
@@ -44,6 +50,10 @@ struct completedReviews: Identifiable{
     var sReview: String
 }
 
+//***********//
+//Main Screen//
+//***********//
+
 struct ContentView: View {
  
     //probably redundant will delete
@@ -57,9 +67,15 @@ struct ContentView: View {
     
     var body: some View{
         NavigationView {
-            NavigationLink(destination: FratSorList()) {
-                Text("Fraternities and Sororities")
-            }.buttonStyle(PlainButtonStyle())
+            VStack{
+                NavigationLink(destination: FratSorList()) {
+                    Text("Fraternities and Sororities")
+                }.buttonStyle(PlainButtonStyle())
+            
+                NavigationLink(destination: AcademicClubsList()) {
+                    Text("Academic Clubs")
+                }.buttonStyle(PlainButtonStyle())
+            }
         }
     }
 }
@@ -67,6 +83,140 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+//**************//
+//Academic Clubs//
+//**************//
+
+struct AcademicClubsList: View {
+    
+    let academicClubs: [AcademicClubs] = [
+        .init(id: 0, clubName: "Bruin Consulting", clubImage: "bruinconsulting", description: "Bruin Consulting (BC) is a student run, non-profit consulting organization. BC is run by UCLA’s most talented and business oriented undergraduates in order to provide implementable consultancy services for its clients. Our mission is thus: we are focused on building value for our community of client organizations and UCLA students. To our clients, we provide innovative, yet tangible solutions which lead to optimized decision making and increased productivity. To our students, we emphasize professional and personal growth by developing analytical and creative intellectual capital."),
+        .init(id: 1, clubName: "Dev-X", clubImage: "devx", description: "    DevX is a student run incubator that allows students of all backgrounds to build real-world projects in a startup environment. We focus on tackling problems both within the UCLA community. By joining DevX, you will be surrounded with like-minded students that develop solutions and make ventures on improving the college experience. If you choose to join, you’ll be paired with a Product Manager and develop a strong network with startup-oriented students."),
+        .init(id: 2, clubName: "Samahang Pilipino", clubImage: "samahang", description: "   Samahang Pilipino was founded in 1972 as a response to an observed lack of Pilipinx representation on campus and an apparent need for a community space. Issues that Samahang Pilipino and Samahang Pilipino Board were established to address the lack of relevant historical and cultural education, limited access to higher education, and low retention rates for students of color. Our historical contributions include being part of the Asian Coalition which fought for ethnic studies at UCLA, promoting cultural nights and cultural graduations, and helping to establish Filipino studies as a field."),
+        .init(id: 3, clubName: "TAMID", clubImage: "tamid", description: "   TAMID is a non-profit organization that helps students develop their professional skills through an education program that focuses on both consulting and investing. We do pro-bono work for innovative Israeli startups on projects involving anything from market research to product development. TAMID has no political or religious affiliations and is open to all majors.")
+    ]
+    
+    var body: some View {
+        NavigationView{
+            List(academicClubs){ club in
+                NavigationLink(destination: ClubDescriptionView(club: club)){
+                        ClubItemRow(club: club)
+                }
+            }.navigationBarTitle("Academic Clubs")
+        }
+    }
+}
+
+struct ClubItemRow: View{
+    let club: AcademicClubs
+    
+    var body: some View{
+        HStack {
+            Image(club.clubImage)
+                .resizable()
+                .clipShape(Circle())
+                .frame(width: 70, height: 70)
+                .clipped()
+            VStack(alignment: .leading){
+                Text(club.clubName).font(.headline)
+            }.padding(.leading, 8)
+        }.padding(.init(top: 12, leading: 0, bottom: 12, trailing: 0))
+    }
+}
+
+struct ClubCircleImage: View {
+    let club: AcademicClubs
+    
+    var body: some View {
+        Image(club.clubImage)
+            .resizable()
+            .frame(width: 225.0, height: 225.0)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 10)
+    }
+}
+
+struct ClubDescriptionView: View {
+    
+    let club: AcademicClubs
+    
+    var body: some View {
+        VStack {
+            ScrollView{
+                ClubCircleImage(club: club)
+                .padding(.bottom, -100)
+                    .offset(y: -30)
+            
+                VStack(alignment: .leading) {
+                    Text(club.clubName)
+                        .font(.title)
+                        .offset(y: 80)
+                        .padding()
+                    Text(club.description)
+                        .font(.body)
+                        .offset(y: 40)
+                        .padding()
+                }
+            }
+            //NavigationView{
+                NavigationLink(destination: ClubReviewsView(club: club)){
+                    Text("See reviews")
+                        .offset(y: -5)
+                }
+        }
+    }
+}
+
+struct ClubReviewsView: View{
+    @State private var review = ""
+    @ObservedObject private var viewReviews = ReviewsViewModel()
+    
+    let club: AcademicClubs
+    
+    var body: some View{
+        VStack{
+            NavigationView{
+                List(viewReviews.reviews){ userReviews in
+                    VStack(alignment: .leading){
+                        Text(userReviews.sReview)
+                    }
+                }
+            }
+            .navigationBarTitle("Reviews")
+            .onAppear(){
+                self.viewReviews.fetchData(org: self.club.clubName)
+            }
+            
+            VStack {
+                TextField("Write a review!", text: $review)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+                Button(action: {
+                    let reviewList = [
+                        "review":self.review
+                    ]
+                    
+                    let docRef = Firestore.firestore().document("\(self.club.clubName) reviews/\(UUID().uuidString)")
+                    print("Setting data...")
+                    docRef.setData(reviewList){ (error) in
+                        if let error = error {
+                            print("ERROR = \(error)")
+                        } else {
+                            print("Data uploaded successfully!")
+                            self.review = ""
+                        }
+                    }
+                }){
+                    Text("Submit Review")
+                        .offset( y: -10)
+                }
+            
+        }
     }
 }
 
