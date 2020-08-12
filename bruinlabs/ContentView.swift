@@ -29,26 +29,79 @@ struct ContentView: View {
             VStack{
                 NavigationLink(destination: AthleticClubsList()) {
                     Text("Athletic Clubs")
-                }.buttonStyle(PlainButtonStyle())
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinblue)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinblue, lineWidth: 5)
+                        )
+                }.buttonStyle(DefaultButtonStyle())
+                    .offset(y: -125)
                 
                 NavigationLink(destination: ConsultingClubsList()) {
                     Text("Consulting Clubs")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinyellow)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        )
                 }.buttonStyle(PlainButtonStyle())
+                    .offset(y: -100)
                 
                 NavigationLink(destination: CulturalClubsList()) {
                     Text("Cultural Clubs")
-                }.buttonStyle(PlainButtonStyle())
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinblue)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinblue, lineWidth: 5)
+                        )
+                }.buttonStyle(DefaultButtonStyle())
+                    .offset(y: -75)
                 
                 NavigationLink(destination: TechClubsList()) {
                     Text("Tech Clubs")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinyellow)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        )
                 }.buttonStyle(PlainButtonStyle())
+                    .offset(y:-50)
                 
                 NavigationLink(destination: FratSorList()) {
                     Text("Fraternities and Sororities")
-                }.buttonStyle(PlainButtonStyle())
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinblue)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinblue, lineWidth: 5)
+                        )
+                }.buttonStyle(DefaultButtonStyle())
+                    .offset(y: -25)
                 
                 NavigationLink(destination: PFratsList()) {
                     Text("Professional Fraternities")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.bruinblue)
+                        .padding()
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        )
                 }.buttonStyle(PlainButtonStyle())
             }
         }
@@ -81,7 +134,7 @@ struct AthleticClubsList: View {
     ]
     
     var body: some View {
-        NavigationView{
+        //NavigationView{
             List(athleticClubs){ club in
                 NavigationLink(destination: AthleticClubsDescriptionView(club: club)){
                     VStack{
@@ -90,7 +143,7 @@ struct AthleticClubsList: View {
                 }
             }
             .navigationBarTitle("Athletic Clubs")
-        }
+        //}
     }
 }
 
@@ -142,7 +195,7 @@ struct AthleticClubsDescriptionView: View {
                         .padding()
                     Text(club.description)
                         .font(.body)
-                        .offset(y: 40)
+                        .offset(y: 55)
                         .padding()
                 }
             }
@@ -162,16 +215,14 @@ struct AthleticClubsReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.club.clubName)
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.club.clubName)
             }
             
             VStack {
@@ -221,13 +272,11 @@ struct ConsultingClubsList: View {
     ]
     
     var body: some View {
-        NavigationView{
             List(consultingClubs){ club in
                 NavigationLink(destination: ClubDescriptionView(club: club)){
                         ClubItemRow(club: club)
                 }
             }.navigationBarTitle("Consulting Clubs")
-        }
     }
 }
 
@@ -279,7 +328,7 @@ struct ClubDescriptionView: View {
                         .padding()
                     Text(club.description)
                         .font(.body)
-                        .offset(y: 40)
+                        .offset(y: 55)
                         .padding()
                 }
             }
@@ -300,17 +349,15 @@ struct ClubReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.club.clubName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.club.clubName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -359,13 +406,11 @@ struct CulturalClubsList: View {
     ]
     
     var body: some View {
-        NavigationView{
             List(culturalClubs){ club in
                 NavigationLink(destination: CulturalClubDescriptionView(club: club)){
                         CulturalClubItemRow(club: club)
                 }
             }.navigationBarTitle("Cultural Clubs")
-        }
     }
 }
 
@@ -417,7 +462,7 @@ struct CulturalClubDescriptionView: View {
                         .padding()
                     Text(club.description)
                         .font(.body)
-                        .offset(y: 40)
+                        .offset(y: 55)
                         .padding()
                 }
             }
@@ -438,17 +483,15 @@ struct CulturalClubReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.club.clubName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.club.clubName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -496,13 +539,11 @@ struct TechClubsList: View {
     ]
     
     var body: some View {
-        NavigationView{
             List(techClubs){ club in
                 NavigationLink(destination: TechClubDescriptionView(club: club)){
                         TechClubItemRow(club: club)
                 }
             }.navigationBarTitle("Tech Clubs")
-        }
     }
 }
 
@@ -554,7 +595,7 @@ struct TechClubDescriptionView: View {
                         .padding()
                     Text(club.description)
                         .font(.body)
-                        .offset(y: 40)
+                        .offset(y: 55)
                         .padding()
                 }
             }
@@ -575,17 +616,15 @@ struct TechClubReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.club.clubName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.club.clubName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -633,13 +672,11 @@ struct PFratsList: View {
     ]
     
     var body: some View {
-        NavigationView{
             List(pFrats){ org in
                 NavigationLink(destination: PFratsDescriptionView(org: org)){
                         PFratsItemRow(org: org)
                 }
             }.navigationBarTitle("Professional Frats")
-        }
     }
 }
 
@@ -771,32 +808,23 @@ struct FratSor: Identifiable {
 
 struct FratSorList: View {
     
-    //prob redundant will delete
-    let fratsor: [FratSor] = [
-        .init(id: 0, fsorg: "Asian Greek Council (AGC)", image: "agc", initials: "AGC"),
-        .init(id: 1, fsorg: "Interfraternity Council (IFC)", image: "ifc", initials: "IFC"),
-        .init(id: 2, fsorg: "Latinx Greek Council (LGC)", image: "lgc", initials: "LGC"),
-        .init(id: 3, fsorg: "Multi-Interest Greek Council (MIGC)", image: "migc", initials: "MIGC"),
-        .init(id: 4, fsorg: "National Pan-Hellenic Council (NPHC)", image: "nphc", initials: "NPHC"),
-        .init(id: 0, fsorg: "Panhellenic Council (NPC)", image: "npc", initials: "NPC"),
-    ]
-    
     var body: some View {
-        NavigationView {
             VStack{
                 NavigationLink(destination: AGCView()) {
-                Text("Asian Greek Council")
+                Text("Asian Greek Council (AGC)")
                 }.buttonStyle(PlainButtonStyle())
+                    .offset(y: -150)
                 
                 NavigationLink(destination: IFCView()) {
                 Text("Interfraternity Council (IFC)")
                 }.buttonStyle(PlainButtonStyle())
+                    .offset(y: -50)
                 
                 NavigationLink(destination: NPCView()) {
-                Text("Panhellenic Council")
+                Text("Panhellenic Council (NPC)")
                 }.buttonStyle(PlainButtonStyle())
+                    .offset(y: 50)
             }
-        }
     }
 }
 
@@ -831,18 +859,16 @@ struct IFC: Identifiable{
 struct IFCView: View {
     
     let ifc: [IFC] = [
-        .init(id: 0, orgName: "Delta Sigma Phi", estDate: "est. 1920", letters: "",
+        .init(id: 0, orgName: "Delta Sigma Phi", estDate: "est. 1920", letters: "ΔΣΦ",
               imageName: "deltasigmaphi", description: "    Since 1920, Delta Sigma Phi has served as the paradigm for brotherhood in our longstanding tradition of creating better men for better lives. Rushing Delta Sigma Phi would connect you to an active brotherhood of over eighty members who are rooted in diversity and inclusion, in which lifelong friendships are formed within countless social, philanthropic, and community service events. Guided by the core values of culture, friendship, and harmony, join us in the pursuit of becoming a better man.")
     ]
     
     var body: some View {
-        NavigationView{
             List(ifc){ org in
                 NavigationLink(destination: IFCDescriptionView(org: org)){
                         IFCItemRow(org: org)
                 }
             }.navigationBarTitle("IFC")
-        }
     }
 }
 
@@ -922,17 +948,15 @@ struct IFCReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.org.orgName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.org.orgName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -979,18 +1003,16 @@ struct NPC: Identifiable{
 struct NPCView: View {
     
     let npc: [NPC] = [
-        .init(id: 0, orgName: "Alpha Phi", estDate: "est. 1927", letters: "",
+        .init(id: 0, orgName: "Alpha Phi", estDate: "est. 1927", letters: "ΑΦ",
               imageName: "alphaphi", description: "     At a time when society looked upon women only as daughters, wives, and mothers not in need of higher education, our ten Founders were pioneers of the coeducational system. Attending school with the handicap of implied, if not open, opposition, our Founders sought support from each other. They felt the need for a place of conference, socialization, and communal support for women obtaining higher education and facing many of the same challenges. They formed Alpha Phi on October 10, 1872 at Syracuse University. Today, Alpha Phi continues to provide a tie which unites a circle of friends for women young and old all around the world.  Our chapter, Beta Delta, was founded at UCLA in 1927 and is proud to be one of the 160 Alpha Phi collegiate chapters nationwide.")
     ]
     
     var body: some View {
-        NavigationView{
             List(npc){ org in
                 NavigationLink(destination: NPCDescriptionView(org: org)){
                         NPCItemRow(org: org)
                 }
             }.navigationBarTitle("NPC")
-        }
     }
 }
 
@@ -1070,17 +1092,15 @@ struct NPCReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.org.orgName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.org.orgName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -1133,13 +1153,11 @@ struct AGCView: View {
     ]
     
     var body: some View{
-        NavigationView{
             List(agc){ org in
                 NavigationLink(destination: AGCDescriptionView(org: org)){
                         AGCItemRow(org: org)
                 }
             }.navigationBarTitle("AGC")
-        }
     }
 }
 
@@ -1220,17 +1238,15 @@ struct AGCReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.org.orgName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.org.orgName)
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)

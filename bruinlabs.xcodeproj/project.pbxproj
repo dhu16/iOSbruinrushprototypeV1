@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0431481A24E39D34001AB828 /* BruinColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431481924E39D34001AB828 /* BruinColors.swift */; };
 		047CEA7A24BE3635002FF048 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CEA7924BE3635002FF048 /* AppDelegate.swift */; };
 		047CEA7C24BE3635002FF048 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CEA7B24BE3635002FF048 /* SceneDelegate.swift */; };
 		047CEA7E24BE3635002FF048 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CEA7D24BE3635002FF048 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0431481924E39D34001AB828 /* BruinColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinColors.swift; sourceTree = "<group>"; };
 		047CEA7624BE3635002FF048 /* bruinlabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bruinlabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047CEA7924BE3635002FF048 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047CEA7B24BE3635002FF048 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				047CEA7924BE3635002FF048 /* AppDelegate.swift */,
+				0431481924E39D34001AB828 /* BruinColors.swift */,
 				047CEA7B24BE3635002FF048 /* SceneDelegate.swift */,
 				047CEA7D24BE3635002FF048 /* ContentView.swift */,
 				0487D77F24CE669C00FB27E6 /* ReviewsViewModel.swift */,
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0431481A24E39D34001AB828 /* BruinColors.swift in Sources */,
 				047CEA7A24BE3635002FF048 /* AppDelegate.swift in Sources */,
 				047CEA7C24BE3635002FF048 /* SceneDelegate.swift in Sources */,
 				0487D78024CE669C00FB27E6 /* ReviewsViewModel.swift in Sources */,
