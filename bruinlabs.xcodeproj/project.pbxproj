@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		0431481924E39D34001AB828 /* BruinColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinColors.swift; sourceTree = "<group>"; };
-		047CEA7624BE3635002FF048 /* bruinlabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bruinlabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		047CEA7624BE3635002FF048 /* Bruinrush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bruinrush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047CEA7924BE3635002FF048 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047CEA7B24BE3635002FF048 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		047CEA7D24BE3635002FF048 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		047CEA7724BE3635002FF048 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				047CEA7624BE3635002FF048 /* bruinlabs.app */,
+				047CEA7624BE3635002FF048 /* Bruinrush.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 			);
 			name = bruinlabs;
 			productName = bruinlabs;
-			productReference = 047CEA7624BE3635002FF048 /* bruinlabs.app */;
+			productReference = 047CEA7624BE3635002FF048 /* Bruinrush.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -392,7 +392,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.bruinlabs.bruinlabs;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bruinrush;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -412,7 +412,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.bruinlabs.bruinlabs;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bruinrush;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -26,16 +26,18 @@ struct ContentView: View {
     
     var body: some View{
         NavigationView {
-            VStack{
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                VStack{
                 NavigationLink(destination: AthleticClubsList()) {
-                    Text("Athletic Clubs")
+                    Text("Club Sports")
                         .fontWeight(.bold)
                         .font(.subheadline)
                         .foregroundColor(.bruinblue)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinblue, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinyellow)
                         )
                 }.buttonStyle(DefaultButtonStyle())
                     .offset(y: -125)
@@ -46,12 +48,12 @@ struct ContentView: View {
                         .font(.subheadline)
                         .foregroundColor(.bruinyellow)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinblue)
                         )
                 }.buttonStyle(PlainButtonStyle())
-                    .offset(y: -100)
+                    .offset(y: -75)
                 
                 NavigationLink(destination: CulturalClubsList()) {
                     Text("Cultural Clubs")
@@ -59,12 +61,12 @@ struct ContentView: View {
                         .font(.subheadline)
                         .foregroundColor(.bruinblue)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinblue, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinyellow)
                         )
                 }.buttonStyle(DefaultButtonStyle())
-                    .offset(y: -75)
+                    .offset(y: -25)
                 
                 NavigationLink(destination: TechClubsList()) {
                     Text("Tech Clubs")
@@ -72,12 +74,12 @@ struct ContentView: View {
                         .font(.subheadline)
                         .foregroundColor(.bruinyellow)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinblue)
                         )
                 }.buttonStyle(PlainButtonStyle())
-                    .offset(y:-50)
+                    .offset(y: 25)
                 
                 NavigationLink(destination: FratSorList()) {
                     Text("Fraternities and Sororities")
@@ -85,25 +87,27 @@ struct ContentView: View {
                         .font(.subheadline)
                         .foregroundColor(.bruinblue)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinblue, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinyellow)
                         )
                 }.buttonStyle(DefaultButtonStyle())
-                    .offset(y: -25)
+                    .offset(y: 75)
                 
                 NavigationLink(destination: PFratsList()) {
                     Text("Professional Fraternities")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinblue)
+                        .foregroundColor(.bruinyellow)
                         .padding()
-                        .overlay(
-                            Capsule(style: .continuous)
-                                .stroke(Color.bruinyellow, lineWidth: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.bruinblue)
                         )
                 }.buttonStyle(PlainButtonStyle())
-            }
+                    .offset(y: 125)
+                }
+            }.edgesIgnoringSafeArea(.all)
         }
     }
 }
@@ -134,7 +138,6 @@ struct AthleticClubsList: View {
     ]
     
     var body: some View {
-        //NavigationView{
             List(athleticClubs){ club in
                 NavigationLink(destination: AthleticClubsDescriptionView(club: club)){
                     VStack{
@@ -143,7 +146,6 @@ struct AthleticClubsList: View {
                 }
             }
             .navigationBarTitle("Athletic Clubs")
-        //}
     }
 }
 
@@ -755,17 +757,15 @@ struct PFratsReviewsView: View{
     
     var body: some View{
         VStack{
-            NavigationView{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
                     }
                 }
-            }
-            .navigationBarTitle("Reviews")
-            .onAppear(){
-                self.viewReviews.fetchData(org: self.org.orgName)
-            }
+                .navigationBarTitle("Reviews")
+                .onAppear(){
+                    self.viewReviews.fetchData(org: self.org.orgName)
+                    }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -809,22 +809,49 @@ struct FratSor: Identifiable {
 struct FratSorList: View {
     
     var body: some View {
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
             VStack{
                 NavigationLink(destination: AGCView()) {
                 Text("Asian Greek Council (AGC)")
+                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .foregroundColor(.bruinblue)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.bruinyellow)
+                    )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: -150)
                 
                 NavigationLink(destination: IFCView()) {
                 Text("Interfraternity Council (IFC)")
+                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .foregroundColor(.bruinyellow)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.bruinblue)
+                    )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: -50)
                 
                 NavigationLink(destination: NPCView()) {
                 Text("Panhellenic Council (NPC)")
+                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .foregroundColor(.bruinblue)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.bruinyellow)
+                    )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: 50)
             }
+        }
     }
 }
 
