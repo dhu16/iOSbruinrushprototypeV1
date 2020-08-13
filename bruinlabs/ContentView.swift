@@ -33,11 +33,11 @@ struct ContentView: View {
                     Text("Club Sports")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinblue)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinyellow)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(DefaultButtonStyle())
                     .offset(y: -125)
@@ -46,11 +46,11 @@ struct ContentView: View {
                     Text("Consulting Clubs")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinyellow)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinblue)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: -75)
@@ -59,11 +59,11 @@ struct ContentView: View {
                     Text("Cultural Clubs")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinblue)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinyellow)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(DefaultButtonStyle())
                     .offset(y: -25)
@@ -72,11 +72,11 @@ struct ContentView: View {
                     Text("Tech Clubs")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinyellow)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinblue)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: 25)
@@ -85,11 +85,11 @@ struct ContentView: View {
                     Text("Fraternities and Sororities")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinblue)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinyellow)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(DefaultButtonStyle())
                     .offset(y: 75)
@@ -98,11 +98,11 @@ struct ContentView: View {
                     Text("Professional Fraternities")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                        .foregroundColor(.bruinyellow)
+                        .foregroundColor(.textblue)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.bruinblue)
+                                .fill(Color.white)
                         )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: 125)
@@ -137,15 +137,23 @@ struct AthleticClubsList: View {
         .init(id: 0, clubName: "UCLA Club Boxing", clubImage: "boxing", description: "    UCLA boxing is a club sport that competes under the National Collegiate Boxing Association (NCBA). No experience nor desire to fight is necessary! Join if you want to learn boxing basics, get a great workout in, or eventually want to get in the ring to fight. Our club is led by a coach who is a full time boxing trainer, and the original founder of the club."),
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(athleticClubs){ club in
-                NavigationLink(destination: AthleticClubsDescriptionView(club: club)){
-                    VStack{
-                        AthleticClubsItemRow(club: club)
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(athleticClubs){ club in
+                    NavigationLink(destination: AthleticClubsDescriptionView(club: club)){
+                        VStack{
+                            AthleticClubsItemRow(club: club)
+                        }
                     }
-                }
-            }
-            .navigationBarTitle("Athletic Clubs")
+                } .navigationBarTitle("Athletic Clubs")
+            )
     }
 }
 
@@ -273,12 +281,23 @@ struct ConsultingClubsList: View {
         .init(id: 1, clubName: "TAMID", clubImage: "tamid", description: "   TAMID is a non-profit organization that helps students develop their professional skills through an education program that focuses on both consulting and investing. We do pro-bono work for innovative Israeli startups on projects involving anything from market research to product development. TAMID has no political or religious affiliations and is open to all majors.")
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(consultingClubs){ club in
-                NavigationLink(destination: ClubDescriptionView(club: club)){
-                        ClubItemRow(club: club)
-                }
-            }.navigationBarTitle("Consulting Clubs")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(consultingClubs){ club in
+                    NavigationLink(destination: ClubDescriptionView(club: club)){
+                        VStack{
+                            ClubItemRow(club: club)
+                        }
+                    }
+                } .navigationBarTitle("Consulting Clubs")
+            )
     }
 }
 
@@ -407,12 +426,23 @@ struct CulturalClubsList: View {
         .init(id: 1, clubName: "KASA (Korean American Student Association)", clubImage: "kasa", description: "   Our mission is to serve, improve, and educate UCLA's students and its robust community through Korean-American heritage. We are dedicated to being a strong, proud, diverse, and unified student organization of exemplary leaders.")
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(culturalClubs){ club in
-                NavigationLink(destination: CulturalClubDescriptionView(club: club)){
-                        CulturalClubItemRow(club: club)
-                }
-            }.navigationBarTitle("Cultural Clubs")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(culturalClubs){ club in
+                    NavigationLink(destination: CulturalClubDescriptionView(club: club)){
+                        VStack{
+                            CulturalClubItemRow(club: club)
+                        }
+                    }
+                } .navigationBarTitle("Cultural Clubs")
+            )
     }
 }
 
@@ -540,12 +570,23 @@ struct TechClubsList: View {
         .init(id: 0, clubName: "Dev-X", clubImage: "devx", description: "    DevX is a student run incubator that allows students of all backgrounds to build real-world projects in a startup environment. We focus on tackling problems both within the UCLA community. By joining DevX, you will be surrounded with like-minded students that develop solutions and make ventures on improving the college experience. If you choose to join, you’ll be paired with a Product Manager and develop a strong network with startup-oriented students."),
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(techClubs){ club in
-                NavigationLink(destination: TechClubDescriptionView(club: club)){
-                        TechClubItemRow(club: club)
-                }
-            }.navigationBarTitle("Tech Clubs")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(techClubs){ club in
+                    NavigationLink(destination: TechClubDescriptionView(club: club)){
+                        VStack{
+                            TechClubItemRow(club: club)
+                        }
+                    }
+                } .navigationBarTitle("Tech Clubs")
+            )
     }
 }
 
@@ -673,12 +714,23 @@ struct PFratsList: View {
         .init(id: 0, orgName: "Delta Sigma Pi", estDate: "est. 1907", letters: "ΔΣΠ", orgImage: "dsp", description: "    As the premier business fraternity on campus, we are not only dedicated to business but also to community service events, social events, and other extracurricular activities.  The 50+ brothers comprising the Xi Omicron Chapter are some of the most highly motivated students at UCLA. The members of the fraternity are both outstanding individuals and strong team players. Each year, we draw in numerous students to our professional events and workshops. Implemented to further their knowledge of the business world, these events help provide the tools in developing prospective careers.")
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(pFrats){ org in
-                NavigationLink(destination: PFratsDescriptionView(org: org)){
-                        PFratsItemRow(org: org)
-                }
-            }.navigationBarTitle("Professional Frats")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(pFrats){ org in
+                    NavigationLink(destination: PFratsDescriptionView(org: org)){
+                        VStack{
+                            PFratsItemRow(org: org)
+                        }
+                    }
+                } .navigationBarTitle("Professional Frats")
+            )
     }
 }
 
@@ -890,12 +942,23 @@ struct IFCView: View {
               imageName: "deltasigmaphi", description: "    Since 1920, Delta Sigma Phi has served as the paradigm for brotherhood in our longstanding tradition of creating better men for better lives. Rushing Delta Sigma Phi would connect you to an active brotherhood of over eighty members who are rooted in diversity and inclusion, in which lifelong friendships are formed within countless social, philanthropic, and community service events. Guided by the core values of culture, friendship, and harmony, join us in the pursuit of becoming a better man.")
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(ifc){ org in
-                NavigationLink(destination: IFCDescriptionView(org: org)){
-                        IFCItemRow(org: org)
-                }
-            }.navigationBarTitle("IFC")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(ifc){ org in
+                    NavigationLink(destination: IFCDescriptionView(org: org)){
+                        VStack{
+                            IFCItemRow(org: org)
+                        }
+                    }
+                } .navigationBarTitle("IFC Orgs")
+            )
     }
 }
 
@@ -1034,12 +1097,23 @@ struct NPCView: View {
               imageName: "alphaphi", description: "     At a time when society looked upon women only as daughters, wives, and mothers not in need of higher education, our ten Founders were pioneers of the coeducational system. Attending school with the handicap of implied, if not open, opposition, our Founders sought support from each other. They felt the need for a place of conference, socialization, and communal support for women obtaining higher education and facing many of the same challenges. They formed Alpha Phi on October 10, 1872 at Syracuse University. Today, Alpha Phi continues to provide a tie which unites a circle of friends for women young and old all around the world.  Our chapter, Beta Delta, was founded at UCLA in 1927 and is proud to be one of the 160 Alpha Phi collegiate chapters nationwide.")
     ]
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-            List(npc){ org in
-                NavigationLink(destination: NPCDescriptionView(org: org)){
-                        NPCItemRow(org: org)
-                }
-            }.navigationBarTitle("NPC")
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(npc){ org in
+                    NavigationLink(destination: NPCDescriptionView(org: org)){
+                        VStack{
+                            NPCItemRow(org: org)
+                        }
+                    }
+                } .navigationBarTitle("NPC Orgs")
+            )
     }
 }
 
@@ -1179,12 +1253,23 @@ struct AGCView: View {
         .init(id: 2, orgName: "Theta Kappa Phi", estDate: "est. 1959", letters: "ΘΚΦ", imageName: "tkp", description: "     Founded in 1959, UCLA Theta Kappa Phi is an asian interest sorority that is open to all individuals. Thetas offers extensive social networking with organizations all over the west coast, alumnae connections in all fields of expertise, and scholarship opportunities for academic excellence and outstanding service. Thetas strive to provide a safe space and support system for all women. If you’re looking for a spontaneous, motivated, and driven sisterhood, please consider Theta Kappa Phi.")
     ]
     
-    var body: some View{
-            List(agc){ org in
-                NavigationLink(destination: AGCDescriptionView(org: org)){
-                        AGCItemRow(org: org)
-                }
-            }.navigationBarTitle("AGC")
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+                List(agc){ org in
+                    NavigationLink(destination: AGCDescriptionView(org: org)){
+                        VStack{
+                            AGCItemRow(org: org)
+                        }
+                    }
+                } .navigationBarTitle("AGC Orgs")
+            )
     }
 }
 

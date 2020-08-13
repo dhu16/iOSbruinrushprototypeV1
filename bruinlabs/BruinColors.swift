@@ -15,4 +15,6 @@ extension Color {
     
     static let bruinyellow = Color("bruinyellow")
     
+    static let textblue = Color("textblue")
+    
 }
