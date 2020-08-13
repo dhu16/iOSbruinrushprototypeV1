@@ -192,28 +192,31 @@ struct AthleticClubsDescriptionView: View {
     let club: AthleticClubs
     
     var body: some View {
-        VStack {
-            ScrollView{
-                AthleticClubsCircleImage(club: club)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    AthleticClubsCircleImage(club: club)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(club.clubName)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    Text(club.description)
-                        .font(.body)
-                        .offset(y: 55)
-                        .padding()
+                    VStack(alignment: .leading) {
+                        Text(club.clubName)
+                            .font(.title)
+                            .offset(y: 240)
+                            .padding()
+                        Text(club.description)
+                            .font(.body)
+                            .offset(y: 215)
+                            .padding()
+                    }
                 }
+                    NavigationLink(destination: AthleticClubsReviewsView(club: club)){
+                        Text("See reviews")
+                            .offset(y: -5)
+                    }
             }
-                NavigationLink(destination: AthleticClubsReviewsView(club: club)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -277,7 +280,7 @@ struct ConsultingClubs: Identifiable {
 struct ConsultingClubsList: View {
     
     let consultingClubs: [ConsultingClubs] = [
-        .init(id: 0, clubName: "Bruin Consulting", clubImage: "bruinconsulting", description: "Bruin Consulting (BC) is a student run, non-profit consulting organization. BC is run by UCLA’s most talented and business oriented undergraduates in order to provide implementable consultancy services for its clients. Our mission is thus: we are focused on building value for our community of client organizations and UCLA students. To our clients, we provide innovative, yet tangible solutions which lead to optimized decision making and increased productivity. To our students, we emphasize professional and personal growth by developing analytical and creative intellectual capital."),
+        .init(id: 0, clubName: "Bruin Consulting", clubImage: "bruinconsulting", description: "     Bruin Consulting (BC) is a student run, non-profit consulting organization. BC is run by UCLA’s most talented and business oriented undergraduates in order to provide implementable consultancy services for its clients. Our mission is thus: we are focused on building value for our community of client organizations and UCLA students. To our clients, we provide innovative, yet tangible solutions which lead to optimized decision making and increased productivity. To our students, we emphasize professional and personal growth by developing analytical and creative intellectual capital."),
         .init(id: 1, clubName: "TAMID", clubImage: "tamid", description: "   TAMID is a non-profit organization that helps students develop their professional skills through an education program that focuses on both consulting and investing. We do pro-bono work for innovative Israeli startups on projects involving anything from market research to product development. TAMID has no political or religious affiliations and is open to all majors.")
     ]
     
@@ -336,29 +339,31 @@ struct ClubDescriptionView: View {
     let club: ConsultingClubs
     
     var body: some View {
-        VStack {
-            ScrollView{
-                ClubCircleImage(club: club)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    ClubCircleImage(club: club)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(club.clubName)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    Text(club.description)
-                        .font(.body)
-                        .offset(y: 55)
-                        .padding()
+                    VStack(alignment: .leading) {
+                        Text(club.clubName)
+                            .font(.title)
+                            .offset(y: 240)
+                            .padding()
+                        Text(club.description)
+                            .font(.body)
+                            .offset(y: 215)
+                            .padding()
+                    }
                 }
+                    NavigationLink(destination: ClubReviewsView(club: club)){
+                        Text("See reviews")
+                            .offset(y: -5)
+                    }
             }
-            //NavigationView{
-                NavigationLink(destination: ClubReviewsView(club: club)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -481,29 +486,31 @@ struct CulturalClubDescriptionView: View {
     let club: CulturalClubs
     
     var body: some View {
-        VStack {
-            ScrollView{
-                CulturalClubCircleImage(club: club)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    CulturalClubCircleImage(club: club)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(club.clubName)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    Text(club.description)
-                        .font(.body)
-                        .offset(y: 55)
-                        .padding()
+                    VStack(alignment: .leading) {
+                        Text(club.clubName)
+                            .font(.title)
+                            .offset(y: 240)
+                            .padding()
+                        Text(club.description)
+                            .font(.body)
+                            .offset(y: 215)
+                            .padding()
+                    }
                 }
+                    NavigationLink(destination: CulturalClubReviewsView(club: club)){
+                        Text("See reviews")
+                            .offset(y: -5)
+                    }
             }
-            //NavigationView{
-                NavigationLink(destination: CulturalClubReviewsView(club: club)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -625,29 +632,31 @@ struct TechClubDescriptionView: View {
     let club: TechClubs
     
     var body: some View {
-        VStack {
-            ScrollView{
-                TechClubCircleImage(club: club)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    TechClubCircleImage(club: club)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(club.clubName)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    Text(club.description)
-                        .font(.body)
-                        .offset(y: 55)
-                        .padding()
+                    VStack(alignment: .leading) {
+                        Text(club.clubName)
+                            .font(.title)
+                            .offset(y: 240)
+                            .padding()
+                        Text(club.description)
+                            .font(.body)
+                            .offset(y: 215)
+                            .padding()
+                    }
                 }
+                    NavigationLink(destination: TechClubReviewsView(club: club)){
+                        Text("See reviews")
+                            .offset(y: -5)
+                    }
             }
-            //NavigationView{
-                NavigationLink(destination: TechClubReviewsView(club: club)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -769,35 +778,38 @@ struct PFratsDescriptionView: View {
     let org: PFrats
     
     var body: some View {
-        VStack {
-            ScrollView{
-                PFratsCircleImage(org: org)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    PFratsCircleImage(org: org)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(org.orgName + " - " + org.letters)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    HStack {
-                        Text(org.estDate)
-                            .font(.subheadline)
-                            .offset(y: 50)
+                    VStack(alignment: .leading) {
+                        Text(org.orgName + " - " + org.letters)
+                            .font(.title)
+                            .offset(y: 80)
                             .padding()
-                        Spacer()
+                        HStack {
+                            Text(org.estDate)
+                                .font(.subheadline)
+                                .offset(y: 50)
+                                .padding()
+                            Spacer()
+                        }
+                        Text(org.description)
+                            .font(.body)
+                            .offset(y: 40)
+                            .padding()
                     }
-                    Text(org.description)
-                        .font(.body)
-                        .offset(y: 40)
-                        .padding()
                 }
+                    NavigationLink(destination: PFratsReviewsView(org: org)){
+                        Text("See reviews")
+                            .offset(y: -5)
+                    }
             }
-                NavigationLink(destination: PFratsReviewsView(org: org)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -808,7 +820,7 @@ struct PFratsReviewsView: View{
     let org: PFrats
     
     var body: some View{
-        VStack{
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -868,11 +880,11 @@ struct FratSorList: View {
                 Text("Asian Greek Council (AGC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.bruinblue)
+                    .foregroundColor(.black)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.bruinyellow)
+                            .fill(Color.white)
                     )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: -150)
@@ -881,11 +893,11 @@ struct FratSorList: View {
                 Text("Interfraternity Council (IFC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.bruinyellow)
+                    .foregroundColor(.black)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.bruinblue)
+                            .fill(Color.white)
                     )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: -50)
@@ -894,16 +906,16 @@ struct FratSorList: View {
                 Text("Panhellenic Council (NPC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.bruinblue)
+                    .foregroundColor(.black)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.bruinyellow)
+                            .fill(Color.white)
                     )
                 }.buttonStyle(PlainButtonStyle())
                     .offset(y: 50)
             }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -957,7 +969,7 @@ struct IFCView: View {
                             IFCItemRow(org: org)
                         }
                     }
-                } .navigationBarTitle("IFC Orgs")
+                } .navigationBarTitle("IFC Organizations")
             )
     }
 }
@@ -1112,7 +1124,7 @@ struct NPCView: View {
                             NPCItemRow(org: org)
                         }
                     }
-                } .navigationBarTitle("NPC Orgs")
+                } .navigationBarTitle("NPC Organizations")
             )
     }
 }
@@ -1268,7 +1280,7 @@ struct AGCView: View {
                             AGCItemRow(org: org)
                         }
                     }
-                } .navigationBarTitle("AGC Orgs")
+                } .navigationBarTitle("AGC Organizations")
             )
     }
 }
