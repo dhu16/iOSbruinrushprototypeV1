@@ -24,9 +24,10 @@ class ReviewsViewModel: ObservableObject {
             self.reviews = documents.map{ (QueryDocumentSnapshot) -> completedReviews in
                 let data = QueryDocumentSnapshot.data()
                 
+                let name = data["name"] as? String ?? ""
                 let review = data["review"] as? String ?? ""
-                return completedReviews(sReview: review)
-                
+                return completedReviews(sName: name, sReview: review)
+                //return completedReviews(sReview: review)
             }
         }
     }

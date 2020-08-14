@@ -15,6 +15,7 @@ import Firebase
 
 struct completedReviews: Identifiable{
     var id = UUID()
+    var sName: String
     var sReview: String
 }
 
@@ -234,6 +235,9 @@ struct AthleticClubsReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -385,6 +389,9 @@ struct ClubReviewsView: View{
            VStack{
                List(viewReviews.reviews){ userReviews in
                    VStack(alignment: .leading){
+                       Text(userReviews.sName)
+                           .font(.headline)
+                       Text("")
                        Text(userReviews.sReview)
                    }
                }
@@ -436,8 +443,10 @@ struct CulturalClubs: Identifiable {
 struct CulturalClubsList: View {
     
     let culturalClubs: [CulturalClubs] = [
-        .init(id: 0, clubName: "Samahang Pilipino", clubImage: "samahang", description: "   Samahang Pilipino was founded in 1972 as a response to an observed lack of Pilipinx representation on campus and an apparent need for a community space. Issues that Samahang Pilipino and Samahang Pilipino Board were established to address the lack of relevant historical and cultural education, limited access to higher education, and low retention rates for students of color. Our historical contributions include being part of the Asian Coalition which fought for ethnic studies at UCLA, promoting cultural nights and cultural graduations, and helping to establish Filipino studies as a field."),
-        .init(id: 1, clubName: "KASA (Korean American Student Association)", clubImage: "kasa", description: "   Our mission is to serve, improve, and educate UCLA's students and its robust community through Korean-American heritage. We are dedicated to being a strong, proud, diverse, and unified student organization of exemplary leaders.")
+        .init(id: 0, clubName: "ACA", clubImage: "aca", description: "   The Association of Chinese Americans is one of the largest social and cultural organizations on campus representing over 500 members. Our student group is involved in cultural, social, community, and political projects which benefit its members, campus, and community. Our programs are primarily geared toward the unique bi-cultural identity of Asian Americans striving to understand their heritage, history, and experiences. The goal of the Association of Chinese Americans is to educate and raise awareness about Asian American bi-culturality. We'd love to answer any questions you have!"),
+        .init(id: 1, clubName: "KASA", clubImage: "kasa", description: "   Our mission is to serve, improve, and educate UCLA's students and its robust community through Korean-American heritage. We are dedicated to being a strong, proud, diverse, and unified student organization of exemplary leaders."),
+        .init(id: 2, clubName: "Samahang Pilipino", clubImage: "samahang", description: "   Samahang Pilipino was founded in 1972 as a response to an observed lack of Pilipinx representation on campus and an apparent need for a community space. Issues that Samahang Pilipino and Samahang Pilipino Board were established to address the lack of relevant historical and cultural education, limited access to higher education, and low retention rates for students of color. Our historical contributions include being part of the Asian Coalition which fought for ethnic studies at UCLA, promoting cultural nights and cultural graduations, and helping to establish Filipino studies as a field.")
+
     ]
     
     init() {
@@ -536,6 +545,9 @@ struct CulturalClubReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -686,6 +698,9 @@ struct TechClubReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -843,6 +858,9 @@ struct PFratsReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -1079,6 +1097,9 @@ struct IFCReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -1239,6 +1260,9 @@ struct NPCReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
@@ -1293,7 +1317,8 @@ struct AGCView: View {
     let agc: [AGC] = [
         .init(id: 0, orgName: "Chi Alpha Delta", estDate: "est. 1929",letters: "ΧΑΔ", imageName: "cad", description: ""),
         .init(id: 1, orgName: "Omega Sigma Tau", estDate: "est. 1966", letters: "ΩΣΤ", imageName: "omega", description: "   Omega Sigma Tau is the first and largest Asian-interest fraternity at UCLA. Now entering its 54th year, our fraternity aims to instill the ideals of Brotherhood, Class, Confidence, Excellence, and Diversity in all of its brothers. From its roots as a small social organization, Omega Sigma Tau has grown into a powerful academic support system, a robust professional network, and most importantly, a family for all of its brothers."),
-        .init(id: 2, orgName: "Theta Kappa Phi", estDate: "est. 1959", letters: "ΘΚΦ", imageName: "tkp", description: "     Founded in 1959, UCLA Theta Kappa Phi is an asian interest sorority that is open to all individuals. Thetas offers extensive social networking with organizations all over the west coast, alumnae connections in all fields of expertise, and scholarship opportunities for academic excellence and outstanding service. Thetas strive to provide a safe space and support system for all women. If you’re looking for a spontaneous, motivated, and driven sisterhood, please consider Theta Kappa Phi.")
+        .init(id: 2, orgName: "Omega Sis", estDate: "", letters: "ΩΣΤ", imageName: "osis", description: "   The Omega Sis program is a unique experience in which the Omega Sigma Tau fraternity offers a glimpse into the tight-knit Asian Greek community here at UCLA. What we want to offer is simply a network, both social and professional, that can serve as a foundation as you live out your years as a Bruin."),
+        .init(id: 3, orgName: "Theta Kappa Phi", estDate: "est. 1959", letters: "ΘΚΦ", imageName: "tkp", description: "     Founded in 1959, UCLA Theta Kappa Phi is an asian interest sorority that is open to all individuals. Thetas offers extensive social networking with organizations all over the west coast, alumnae connections in all fields of expertise, and scholarship opportunities for academic excellence and outstanding service. Thetas strive to provide a safe space and support system for all women. If you’re looking for a spontaneous, motivated, and driven sisterhood, please consider Theta Kappa Phi.")
     ]
     
     init() {
@@ -1400,6 +1425,9 @@ struct AGCReviewsView: View{
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
+                        Text(userReviews.sName)
+                            .font(.headline)
+                        Text("")
                         Text(userReviews.sReview)
                     }
                 }
