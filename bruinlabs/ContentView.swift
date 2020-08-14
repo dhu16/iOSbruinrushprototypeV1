@@ -213,7 +213,7 @@ struct AthleticClubsDescriptionView: View {
                 }
                     NavigationLink(destination: AthleticClubsReviewsView(club: club)){
                         Text("See reviews")
-                            .offset(y: -5)
+                            .offset(y: -10)
                     }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -224,10 +224,14 @@ struct AthleticClubsReviewsView: View{
     @State private var review = ""
     @ObservedObject private var viewReviews = ReviewsViewModel()
     
+    
     let club: AthleticClubs
     
     var body: some View{
-        VStack{
+         LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -236,7 +240,7 @@ struct AthleticClubsReviewsView: View{
                 .navigationBarTitle("Reviews")
                 .onAppear(){
                     self.viewReviews.fetchData(org: self.club.clubName)
-            }
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -245,7 +249,7 @@ struct AthleticClubsReviewsView: View{
             }
                 Button(action: {
                     let reviewList = [
-                        "review": self.review
+                        "review":self.review
                     ]
                     
                     let docRef = Firestore.firestore().document("\(self.club.clubName) reviews/\(UUID().uuidString)")
@@ -263,7 +267,8 @@ struct AthleticClubsReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -360,7 +365,7 @@ struct ClubDescriptionView: View {
                 }
                     NavigationLink(destination: ClubReviewsView(club: club)){
                         Text("See reviews")
-                            .offset(y: -5)
+                            .offset(y: -10)
                     }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -374,43 +379,47 @@ struct ClubReviewsView: View{
     let club: ConsultingClubs
     
     var body: some View{
-        VStack{
-                List(viewReviews.reviews){ userReviews in
-                    VStack(alignment: .leading){
-                        Text(userReviews.sReview)
-                    }
-                }
-                .navigationBarTitle("Reviews")
-                .onAppear(){
-                    self.viewReviews.fetchData(org: self.club.clubName)
-                }
-            
-            VStack {
-                TextField("Write a review!", text: $review)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-                Button(action: {
-                    let reviewList = [
-                        "review": self.review
-                    ]
-                    
-                    let docRef = Firestore.firestore().document("\(self.club.clubName) reviews/\(UUID().uuidString)")
-                    print("Setting data...")
-                    docRef.setData(reviewList){ (error) in
-                        if let error = error {
-                            print("ERROR = \(error)")
-                        } else {
-                            print("Data uploaded successfully!")
-                            self.review = ""
-                        }
-                    }
-                }){
-                    Text("Submit Review")
-                        .offset( y: -10)
-                }
-            
-        }
+       LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+           .edgesIgnoringSafeArea(.vertical)
+           .overlay(
+           VStack{
+               List(viewReviews.reviews){ userReviews in
+                   VStack(alignment: .leading){
+                       Text(userReviews.sReview)
+                   }
+               }
+               .navigationBarTitle("Reviews")
+               .onAppear(){
+                   self.viewReviews.fetchData(org: self.club.clubName)
+               }
+           
+           VStack {
+               TextField("Write a review!", text: $review)
+               .padding()
+               .textFieldStyle(RoundedBorderTextFieldStyle())
+           }
+               Button(action: {
+                   let reviewList = [
+                       "review":self.review
+                   ]
+                   
+                   let docRef = Firestore.firestore().document("\(self.club.clubName) reviews/\(UUID().uuidString)")
+                   print("Setting data...")
+                   docRef.setData(reviewList){ (error) in
+                       if let error = error {
+                           print("ERROR = \(error)")
+                       } else {
+                           print("Data uploaded successfully!")
+                           self.review = ""
+                       }
+                   }
+               }){
+                   Text("Submit Review")
+                       .offset( y: -10)
+               }
+           
+           }
+           )
     }
 }
 
@@ -507,7 +516,7 @@ struct CulturalClubDescriptionView: View {
                 }
                     NavigationLink(destination: CulturalClubReviewsView(club: club)){
                         Text("See reviews")
-                            .offset(y: -5)
+                            .offset(y: -10)
                     }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -521,7 +530,10 @@ struct CulturalClubReviewsView: View{
     let club: CulturalClubs
     
     var body: some View{
-        VStack{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -557,7 +569,8 @@ struct CulturalClubReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -653,7 +666,7 @@ struct TechClubDescriptionView: View {
                 }
                     NavigationLink(destination: TechClubReviewsView(club: club)){
                         Text("See reviews")
-                            .offset(y: -5)
+                            .offset(y: -10)
                     }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -667,7 +680,10 @@ struct TechClubReviewsView: View{
     let club: TechClubs
     
     var body: some View{
-        VStack{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -685,7 +701,7 @@ struct TechClubReviewsView: View{
             }
                 Button(action: {
                     let reviewList = [
-                        "review": self.review
+                        "review":self.review
                     ]
                     
                     let docRef = Firestore.firestore().document("\(self.club.clubName) reviews/\(UUID().uuidString)")
@@ -703,7 +719,8 @@ struct TechClubReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -789,24 +806,24 @@ struct PFratsDescriptionView: View {
                     VStack(alignment: .leading) {
                         Text(org.orgName + " - " + org.letters)
                             .font(.title)
-                            .offset(y: 80)
+                            .offset(y: 240)
                             .padding()
                         HStack {
                             Text(org.estDate)
                                 .font(.subheadline)
-                                .offset(y: 50)
+                                .offset(y: 215)
                                 .padding()
                             Spacer()
                         }
                         Text(org.description)
                             .font(.body)
-                            .offset(y: 40)
+                            .offset(y: 205)
                             .padding()
                     }
                 }
                     NavigationLink(destination: PFratsReviewsView(org: org)){
                         Text("See reviews")
-                            .offset(y: -5)
+                            .offset(y: -10)
                     }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -820,6 +837,9 @@ struct PFratsReviewsView: View{
     let org: PFrats
     
     var body: some View{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
             VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
@@ -829,7 +849,7 @@ struct PFratsReviewsView: View{
                 .navigationBarTitle("Reviews")
                 .onAppear(){
                     self.viewReviews.fetchData(org: self.org.orgName)
-                    }
+                }
             
             VStack {
                 TextField("Write a review!", text: $review)
@@ -838,7 +858,7 @@ struct PFratsReviewsView: View{
             }
                 Button(action: {
                     let reviewList = [
-                        "review": self.review
+                        "review":self.review
                     ]
                     
                     let docRef = Firestore.firestore().document("\(self.org.orgName) reviews/\(UUID().uuidString)")
@@ -856,7 +876,8 @@ struct PFratsReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -880,7 +901,7 @@ struct FratSorList: View {
                 Text("Asian Greek Council (AGC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.textblue)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
@@ -893,7 +914,7 @@ struct FratSorList: View {
                 Text("Interfraternity Council (IFC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.textblue)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
@@ -906,7 +927,7 @@ struct FratSorList: View {
                 Text("Panhellenic Council (NPC)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.textblue)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 20)
@@ -1010,35 +1031,38 @@ struct IFCDescriptionView: View {
     let org: IFC
     
     var body: some View {
-        VStack {
-            ScrollView{
-                IFCCircleImage(org: org)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    IFCCircleImage(org: org)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(org.orgName + " - " + org.letters)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    HStack {
-                        Text(org.estDate)
-                            .font(.subheadline)
-                            .offset(y: 50)
+                    VStack(alignment: .leading) {
+                        Text(org.orgName + " - " + org.letters)
+                            .font(.title)
+                            .offset(y: 240)
                             .padding()
-                        Spacer()
+                        HStack {
+                            Text(org.estDate)
+                                .font(.subheadline)
+                                .offset(y: 215)
+                                .padding()
+                            Spacer()
+                        }
+                        Text(org.description)
+                            .font(.body)
+                            .offset(y: 205)
+                            .padding()
                     }
-                    Text(org.description)
-                        .font(.body)
-                        .offset(y: 40)
-                        .padding()
                 }
+                    NavigationLink(destination: IFCReviewsView(org: org)){
+                        Text("See reviews")
+                            .offset(y: -10)
+                    }
             }
-                NavigationLink(destination: IFCReviewsView(org: org)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -1049,7 +1073,10 @@ struct IFCReviewsView: View{
     let org: IFC
     
     var body: some View{
-        VStack{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -1065,8 +1092,6 @@ struct IFCReviewsView: View{
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            
-            
                 Button(action: {
                     let reviewList = [
                         "review":self.review
@@ -1087,7 +1112,8 @@ struct IFCReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -1165,35 +1191,38 @@ struct NPCDescriptionView: View {
     let org: NPC
     
     var body: some View {
-        VStack {
-            ScrollView{
-                NPCCircleImage(org: org)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    NPCCircleImage(org: org)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                    Text(org.orgName + " - " + org.letters)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    HStack {
-                        Text(org.estDate)
-                            .font(.subheadline)
-                            .offset(y: 50)
+                    VStack(alignment: .leading) {
+                        Text(org.orgName + " - " + org.letters)
+                            .font(.title)
+                            .offset(y: 240)
                             .padding()
-                        Spacer()
+                        HStack {
+                            Text(org.estDate)
+                                .font(.subheadline)
+                                .offset(y: 215)
+                                .padding()
+                            Spacer()
+                        }
+                        Text(org.description)
+                            .font(.body)
+                            .offset(y: 205)
+                            .padding()
                     }
-                    Text(org.description)
-                        .font(.body)
-                        .offset(y: 40)
-                        .padding()
                 }
+                    NavigationLink(destination: NPCReviewsView(org: org)){
+                        Text("See reviews")
+                            .offset(y: -10)
+                    }
             }
-                NavigationLink(destination: NPCReviewsView(org: org)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -1204,7 +1233,10 @@ struct NPCReviewsView: View{
     let org: NPC
     
     var body: some View{
-        VStack{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -1220,8 +1252,6 @@ struct NPCReviewsView: View{
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             }
-            
-            
                 Button(action: {
                     let reviewList = [
                         "review":self.review
@@ -1242,7 +1272,8 @@ struct NPCReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
 
@@ -1321,36 +1352,38 @@ struct AGCDescriptionView: View {
     let org: AGC
     
     var body: some View {
-        VStack {
-            ScrollView{
-                AGCCircleImage(org: org)
-                .padding(.bottom, -100)
-                    .offset(y: -30)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            VStack {
+                ScrollView{
+                    AGCCircleImage(org: org)
+                        .padding(.bottom, -100)
+                        .offset(y: 130)
             
-                VStack(alignment: .leading) {
-                //Text("Omega Sigma Tau - ΩΣΤ")
-                    Text(org.orgName + " - " + org.letters)
-                        .font(.title)
-                        .offset(y: 80)
-                        .padding()
-                    HStack {
-                        Text(org.estDate)
-                            .font(.subheadline)
-                            .offset(y: 50)
+                    VStack(alignment: .leading) {
+                        Text(org.orgName + " - " + org.letters)
+                            .font(.title)
+                            .offset(y: 240)
                             .padding()
-                        Spacer()
+                        HStack {
+                            Text(org.estDate)
+                                .font(.subheadline)
+                                .offset(y: 215)
+                                .padding()
+                            Spacer()
+                        }
+                        Text(org.description)
+                            .font(.body)
+                            .offset(y: 205)
+                            .padding()
                     }
-                    Text(org.description)
-                        .font(.body)
-                        .offset(y: 40)
-                        .padding()
                 }
+                    NavigationLink(destination: AGCReviewsView(org: org)){
+                        Text("See reviews")
+                            .offset(y: -10)
+                    }
             }
-                NavigationLink(destination: AGCReviewsView(org: org)){
-                    Text("See reviews")
-                        .offset(y: -5)
-                }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -1361,7 +1394,10 @@ struct AGCReviewsView: View{
     let org: AGC
     
     var body: some View{
-        VStack{
+        LinearGradient(gradient: Gradient(colors: [.bruinblue, .white, .bruinyellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.vertical)
+            .overlay(
+            VStack{
                 List(viewReviews.reviews){ userReviews in
                     VStack(alignment: .leading){
                         Text(userReviews.sReview)
@@ -1397,6 +1433,7 @@ struct AGCReviewsView: View{
                         .offset( y: -10)
                 }
             
-        }
+            }
+            )
     }
 }
